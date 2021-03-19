@@ -10,8 +10,6 @@
 - Informations précises au clic sur le hook
 - Restriction par adresse IP
 
-[Demo](http://prestashop.definima.net/)
-
 
 ## Installation
 
@@ -21,6 +19,11 @@ Testé sur les versions <code>1.7.7.1</code>, <code>1.7.6.8</code>, <code>1.7.4.
 
 
 ## Captures
+Affichage dans la liste des modules :
+
+![alt text](./public/capture_4.png "Liste des modules")
+
+
 Configuration du module :
 
 ![alt text](./public/capture_1.png "Configuration administration")
