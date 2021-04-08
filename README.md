@@ -1,47 +1,64 @@
-# Visualisation des hooks
+# Hook viewer
 
-> Ce module configurable permet d'afficher les hooks sur le site et dans l'administration
+> This configurable module allows you to display hooks on the site and in the administration
 
-- Afficher ou non les hooks sur le site
-- Les afficher ou non dans l'administration
-- Les afficher uniquement si on est connecté à l'administration
-- Les afficher uniquement si le mode debug est activé
-- Type d'affichage _inline_ ou en _commentaire HTML_
-- Informations précises au clic sur le hook
-- Restriction par adresse IP
+- Display or not the hooks on the site
+- Display them or not in the administration
+- Display them only if you are connected to the administration
+- Display them only if debug mode is enabled
+- Type of display _inline_ or _HTML comment_
+- Precise information when clicking on the hook
+- Restriction by IP address
+
+
+## Compatibility
+
+Tested on the following versions: 
+- 1.7.7.2
+- 1.7.7.1
+- 1.7.6.8
+- 1.7.4.2
+
+If you have used it successfully on other versions let me know or create a PR.
 
 
 ## Installation
 
-Télécharger le fichier [rs_hookviewer-1.2.0.zip](rs_hookviewer-1.2.0.zip) et l'installer depuis l'administration de Prestashop comme un module normal.
-
-Testé sur les versions <code>1.7.7.1</code>, <code>1.7.6.8</code>, <code>1.7.4.2</code>
+Download the latest version from [Github releases](https://github.com/rseon/rs_hookviewer/releases).
 
 
 ## Captures
-Affichage dans la liste des modules :
 
-![alt text](./public/capture_4.png "Liste des modules")
+How it is displayed in the list of modules:
 
-
-Configuration du module :
-
-![alt text](./public/capture_1.png "Configuration administration")
+![alt text](./public/capture_4.png "List of modules")
 
 
-Affichage des hooks dans la page :
+Module configuration:
 
-![alt text](./public/capture_2.png "Rendu des hooks")
+![alt text](./public/capture_1.png "Module configuration")
 
 
-Informations du hook :
+Displaying hooks in the page:
 
-![alt text](./public/capture_3.png "Informations du hook")
+![alt text](./public/capture_2.png "Render hooks")
+
+
+Hook information:
+
+![alt text](./public/capture_3.png "Hook information")
 
 
 ## Hooks
-Le module est automatiquement greffé à tous les hooks disponibles lors de l'installation (récupérés dans la BDD).
 
-[Liste (presque) complète](https://devdocs.prestashop.com/1.7/modules/concepts/hooks/list-of-hooks/)
+The module is automagically added to all the hooks available during installation (retrieved from the database).
 
-**Attention** : il se peut que le fonctionnement soit altéré. Si tel est le cas, il faut ajouter le hook incriminé dans la constante `HOOK_TO_EXCEPT` du module.
+
+[List (almost) complete](https://devdocs.prestashop.com/1.7/modules/concepts/hooks/list-of-hooks/)
+
+**Warning**: operation may be impaired. If this is the case, you must add the offending hook in the constant `HOOK_TO_EXCEPT` of the module so that it is not taken into account.
+
+
+## Greetings
+
+[Hervé Hennes](https://www.h-hennes.fr/) whose blog often kept me out of trouble, and the [Friends of Presta](https://friendsofpresta.org/fr) community.

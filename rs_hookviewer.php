@@ -54,7 +54,7 @@ class rs_hookviewer extends Module
     {
         $this->name = 'rs_hookviewer';
         $this->tab = 'administration';
-        $this->version = '1.2.0';
+        $this->version = '1.3.0';
         $this->author = 'rseon';
         $this->need_instance = 0;
         $this->bootstrap = true;
@@ -70,7 +70,8 @@ class rs_hookviewer extends Module
         if((int) Configuration::get('RS_HOOKVIEWER_DISPLAY_HOOKS_ONLY_DEBUG_MODE') === 1) {
             $this->displayHooks = $this->displayHooks && _PS_MODE_DEV_;
         }
-        $this->inAdmin = strpos($_SERVER['REQUEST_URI'], '/admin') !== false;
+
+        $this->inAdmin = strpos($_SERVER['REQUEST_URI'], trim(str_replace(_PS_ROOT_DIR_, '', _PS_ADMIN_DIR_), DIRECTORY_SEPARATOR)) !== false;
         $this->displayHooksBO = $this->displayHooks && (int) Configuration::get('RS_HOOKVIEWER_DISPLAY_HOOKS_BO') === 1;
         if(Configuration::get('RS_HOOKVIEWER_DISPLAY_HOOKS_IP')) {
             $this->restrictedByIP = !in_array($_SERVER['REMOTE_ADDR'], explode(',', Configuration::get('RS_HOOKVIEWER_DISPLAY_HOOKS_IP')));
@@ -106,6 +107,11 @@ class rs_hookviewer extends Module
      */
     protected function showHookInfo($method, $arguments)
     {
+        // Ignore action and filter hooks
+        if(strpos($method, 'hookAction') !== false || strpos($method, 'hookFilter') !== false) {
+            return;
+        }
+
         // Display hooks
         if(!$this->displayHooks) {
             return;
@@ -179,7 +185,7 @@ class rs_hookviewer extends Module
                 $p = "'$p'";
             }
             return "($type) $p";
-        }, $paramsFiltered);
+        }, $params);
 
         // Add hook info
         $hookInfo = [];
